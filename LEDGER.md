@@ -77,3 +77,36 @@ review:    read the traceback with Claude's explanation: all 8 failures ended at
 checks:    Verify the files are saved after each edit and there is no original code or placeholder codes in place
 evidence:  HANDOUT Step 2, Done when: pytest tests/test_split.py passes
 risk:      none for the splitter logic itself; verify accuracy and ensure the new codes are saved
+
+## Entry 5
+artifact:  askcode/search_words.py at commit
+tool:      Claude Opus 5.5 on claude.ai
+prompts:   Claude wrote search_words following the
+           six scoring steps in the docstring; prompts/searchwords.md
+review:    <what you read; e.g. whether you checked that ties keep corpus order
+           via the (-score, index) sort key, and that zero-df words are ignored>
+checks:    pytest tests/test_search_words.py: 100% pass
+evidence:  HANDOUT Step 3, search_words.py docstring steps 1 to 6
+risk:      no stemming or length normalization, so plural and paraphrased
+           questions miss (q02 "redirects") and long functions such as
+           resolve_redirects rank high on unrelated questions (q04, q05, q06);
+           behaviour on the hidden tests is unverified
+
+## Entry 6
+artifact:  askcode/answer.py at commit 
+tool:      Claude Opus 5.5 on claude.ai
+prompts:   asked Claude to implement the assignment's code files from the handout;
+           Claude wrote parse_reply from the five rules in the docstring;
+           prompts/answer.md
+review:    read parse_reply section by section against docstring rules 1 to 5;
+           confirmed the fence must be whole first/last lines, duplicate keys are
+           rejected via object_pairs_hook, BadReply is re-raised before the
+           ValueError handler, and bool is excluded from line; 
+checks:    pytest tests/test_answer.py: 15 passed n 0.01s
+evidence:  HANDOUT Step 4 part B, answer.py docstring rules 1 to 5
+risk:      a reply that passes is well formed, not true: parse_reply does not
+           check that "file" was one of the files shown or that "line" falls
+           inside a shown function, so a confident wrong citation passes;
+           behaviour on the hidden tests is unverified
+```
+

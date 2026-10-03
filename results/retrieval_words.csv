@@ -1,0 +1,11 @@
+id,question,expected_file,expected_function,retrieved,hit,hit_rank
+q01,"If a POST request gets a 301 redirect, which HTTP method does requests use for the follow-up request?",sessions.py,SessionRedirectMixin.rebuild_method,sessions.py::SessionRedirectMixin.rebuild_method; api.py::request; adapters.py::HTTPAdapter.send,yes,1
+q02,How many redirects will a new Session follow before giving up?,sessions.py,Session.__init__,api.py::request; sessions.py::Session.request; adapters.py::HTTPAdapter.send,no,
+q03,What character encoding is assumed for a text response whose Content-Type header has no charset?,utils.py,get_encoding_from_headers,utils.py::get_encoding_from_headers; models.py::Response.text; models.py::Response.apparent_encoding,yes,1
+q04,Which status codes make raise_for_status throw an HTTPError?,models.py,Response.raise_for_status,sessions.py::SessionRedirectMixin.resolve_redirects; cookies.py::create_cookie; models.py::Response.ok,no,
+q05,"By default, how many times does the transport adapter retry a failed connection?",adapters.py,HTTPAdapter.__init__,sessions.py::SessionRedirectMixin.resolve_redirects; sessions.py::Session.__init__; adapters.py::HTTPAdapter.send,no,
+q06,"When per-request headers are combined with the session's headers, what happens to a key the request sets to None?",sessions.py,merge_setting,utils.py::super_len; sessions.py::SessionRedirectMixin.resolve_redirects; auth.py::HTTPDigestAuth.__call__,no,
+q07,Is response.ok true only when the status code is 200?,models.py,Response.ok,models.py::Response.__init__; models.py::Response.__bool__; models.py::Response.__nonzero__,no,
+q08,What username and password are extracted from a URL that contains no credentials?,utils.py,get_auth_from_url,adapters.py::HTTPAdapter.proxy_manager_for; adapters.py::HTTPAdapter.proxy_headers; auth.py::HTTPDigestAuth.build_digest_header,no,
+q09,Can I list an IP range in CIDR notation in no_proxy to skip the proxy for those addresses?,utils.py,should_bypass_proxies,utils.py::should_bypass_proxies; utils.py::is_valid_cidr; auth.py::HTTPDigestAuth.__call__,yes,1
+q10,How many requests per second can a Session send before requests starts throttling it?,,,api.py::request; sessions.py::SessionRedirectMixin.resolve_redirects; sessions.py::Session.request,n/a,

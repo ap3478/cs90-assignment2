@@ -30,4 +30,50 @@ def parse_reply(text: str) -> dict:
 
     Return a new dict with exactly the three keys and the values from the reply.
     """
-    raise NotImplementedError("Step 4: write parse_reply in askcode/answer.py")
+    if not isinstance(text, str):
+        raise BadReply("reply is not text")
+
+    body = text.strip()
+    if body.startswith("```"):
+        lines = body.split("\n")
+        if len(lines) < 3 or lines[0].strip() not in ("```", "```json") or lines[-1].strip() != "```":
+            raise BadReply("rule 1: code fence must be a ``` or ```json line and a closing ``` line")
+        body = "\n".join(lines[1:-1]).strip()
+
+    if not body.startswith("{"):
+        raise BadReply("rule 1: reply is not a single JSON object")
+    def no_duplicate_keys(pairs: list) -> dict:
+        keys = [key for key, _ in pairs]
+        if len(keys) != len(set(keys)):
+            raise BadReply("rule 2: a key appears more than once")
+        return dict(pairs)
+
+    try:
+        data = json.loads(body, object_pairs_hook=no_duplicate_keys)
+    except BadReply:
+        raise
+    except (json.JSONDecodeError, ValueError, RecursionError) as error:
+        raise BadReply(f"rule 1: not valid JSON, or text around the object ({error})") from None
+    if not isinstance(data, dict):
+        raise BadReply("rule 1: reply is not a JSON object")
+
+    if set(data) != {"answer", "file", "line"}:
+        raise BadReply(f"rule 2: keys must be exactly answer, file, line; got {sorted(data)}")
+
+    answer, file, line = data["answer"], data["file"], data["line"]
+
+    if not isinstance(answer, str) or not answer.strip():
+        raise BadReply("rule 3: answer must be a non-empty string")
+
+    if file is not None and (not isinstance(file, str) or not file.strip()):
+        raise BadReply("rule 4: file must be a non-empty string or null")
+    if line is not None:
+        if isinstance(line, bool) or not isinstance(line, int):
+            raise BadReply("rule 4: line must be an integer or null")
+        if line < 1:
+            raise BadReply("rule 4: line must be at least 1")
+
+    if (file is None) != (line is None):
+        raise BadReply("rule 5: file and line must both be null or both be set")
+
+    return {"answer": answer, "file": file, "line": line}
