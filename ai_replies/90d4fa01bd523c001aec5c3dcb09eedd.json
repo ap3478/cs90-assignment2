@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "90d4fa01bd523c001aec5c3dcb09eedd",
+  "asked_at": "2026-10-03T20:25:10+00:00",
+  "input_tokens": 2913,
+  "output_tokens": 1064,
+  "text": "{\"answer\":\"30 redirects\",\"file\":\"sessions.py\",\"line\":\"DEFAULT_REDIRECT_LIMIT = 30; Session.__init__ sets max_redirects to this default.\"}"
+}

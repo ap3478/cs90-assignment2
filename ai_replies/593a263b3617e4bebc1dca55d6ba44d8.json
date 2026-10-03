@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "593a263b3617e4bebc1dca55d6ba44d8",
+  "asked_at": "2026-10-03T20:25:34+00:00",
+  "input_tokens": 1759,
+  "output_tokens": 397,
+  "text": "{\"answer\":{\"username\":null,\"password\":null},\"file\":\"adapters.py\",\"line\":281}"
+}

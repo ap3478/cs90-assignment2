@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "10ccb2a8222d8b6d54d22f3b92f94eaf",
+  "asked_at": "2026-10-03T20:24:59+00:00",
+  "input_tokens": 2193,
+  "output_tokens": 19,
+  "text": "{\"answer\":\"GET\",\"file\":\"sessions.py\",\"line\":\"348–353\"}"
+}

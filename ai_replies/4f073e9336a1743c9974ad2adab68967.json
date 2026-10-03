@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "4f073e9336a1743c9974ad2adab68967",
+  "asked_at": "2026-10-03T20:25:19+00:00",
+  "input_tokens": 2982,
+  "output_tokens": 447,
+  "text": "{\"answer\":\"0 retries by default (the adapter makes one initial attempt, with no retry).\",\"file\":\"adapters.py\",\"line\":\"HTTPAdapter.__init__ (around lines 190–203)\"}"
+}

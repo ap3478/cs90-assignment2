@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "eb4b6aef236fc9b7d1582dbf7d56c13e",
+  "asked_at": "2026-10-03T20:25:38+00:00",
+  "input_tokens": 1057,
+  "output_tokens": 276,
+  "text": "{\n  \"answer\": \"Yes. For IPv4 URLs, `no_proxy=192.168.1.0/24` bypasses the proxy for addresses in that range. CIDR masks from /1 through /32 are supported; IPv6 CIDR ranges are not handled here.\",\n  \"file\": \"utils.py\",\n  \"line\": \"719-740, 793-801\"\n}"
+}

@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "929deccaf172664813603ea6ce637fd4",
+  "asked_at": "2026-10-03T20:25:30+00:00",
+  "input_tokens": 829,
+  "output_tokens": 82,
+  "text": "{\"answer\":\"No. `response.ok` is true when the status code is below 400; it is not limited to 200.\",\"file\":\"models.py\",\"line\":\"731-736\"}"
+}

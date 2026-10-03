@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "6dbf24b5a293274b08dc80093151e061",
+  "asked_at": "2026-10-03T20:25:15+00:00",
+  "input_tokens": 1745,
+  "output_tokens": 209,
+  "text": "{\"answer\":\"HTTP status codes 400–599 (400 through 599 inclusive) make `raise_for_status` throw an `HTTPError`.\",\"file\":\"models.py\",\"line\":\"756–760\"}"
+}

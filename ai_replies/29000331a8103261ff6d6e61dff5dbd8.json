@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "29000331a8103261ff6d6e61dff5dbd8",
+  "asked_at": "2026-10-03T20:25:28+00:00",
+  "input_tokens": 2158,
+  "output_tokens": 1038,
+  "text": "{\"answer\":\"The request’s `None` overrides the session value, then the key is removed from the merged headers. This lets a request omit a header set by the session.\",\"file\":\"sessions.py\",\"line\":\"merge_setting (around lines 90–110)\"}"
+}

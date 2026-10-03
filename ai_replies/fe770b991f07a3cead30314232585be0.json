@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "fe770b991f07a3cead30314232585be0",
+  "asked_at": "2026-10-03T20:25:40+00:00",
+  "input_tokens": 3057,
+  "output_tokens": 149,
+  "text": "{\"answer\":\"There is no built-in requests-per-second limit or throttling in a Session. The achievable rate depends on the server, network, and your application.\",\"file\":\"sessions.py\",\"line\":\"583-591\"}"
+}
