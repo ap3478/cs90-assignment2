@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "cdffc1270d91dc2be8ed1264c18ff683",
+  "asked_at": "2026-10-03T19:49:41+00:00",
+  "input_tokens": 2221,
+  "output_tokens": 268,
+  "text": "{\"answer\":\"The shown code says status codes between 400 and 600 indicate a client or server error; it does not show the exact `raise_for_status` condition.\",\"file\":\"models.py\",\"line\":759}"
+}

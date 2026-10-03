@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "f29208528992cb7dd8c267096a86249b",
+  "asked_at": "2026-10-03T19:56:57+00:00",
+  "input_tokens": 737,
+  "output_tokens": 22,
+  "text": "{\"answer\":\"ISO-8859-1\",\"file\":\"utils.py\",\"line\":557}"
+}

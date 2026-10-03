@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "4497d6a5506f7378da16cdefa49e7538",
+  "asked_at": "2026-10-03T19:57:07+00:00",
+  "input_tokens": 1114,
+  "output_tokens": 84,
+  "text": "{\"answer\":\"Yes. For an IPv4 URL, the code checks whether each `no_proxy` entry is CIDR notation and bypasses the proxy when the address is in that network.\",\"file\":\"utils.py\",\"line\":796}"
+}

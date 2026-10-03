@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "4bbd8c24a45462757393300a250c86aa",
+  "asked_at": "2026-10-03T19:57:01+00:00",
+  "input_tokens": 715,
+  "output_tokens": 89,
+  "text": "{\"answer\":\"By default, it allows 0 retries for a failed connection.\",\"file\":\"adapters.py\",\"line\":210}"
+}
