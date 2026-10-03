@@ -1,0 +1,72 @@
+[
+  {
+    "id": "q01",
+    "question": "If a POST request gets a 301 redirect, which HTTP method does requests use for the follow-up request?",
+    "expected_file": "sessions.py",
+    "expected_function": "SessionRedirectMixin.rebuild_method",
+    "expected_answer": "GET. rebuild_method turns a POST answered with 301 (codes.moved) into a GET, mimicking browsers (lines 350 to 351)."
+  },
+  {
+    "id": "q02",
+    "question": "How many redirects will a new Session follow before giving up?",
+    "expected_file": "sessions.py",
+    "expected_function": "Session.__init__",
+    "expected_answer": "Session.__init__ sets max_redirects to DEFAULT_REDIRECT_LIMIT, which is 30; exceeding it raises TooManyRedirects (line 434)."
+  },
+  {
+    "id": "q03",
+    "question": "What character encoding is assumed for a text response whose Content-Type header has no charset?",
+    "expected_file": "utils.py",
+    "expected_function": "get_encoding_from_headers",
+    "expected_answer": "ISO-8859-1. If there is no charset parameter and the content type contains text, get_encoding_from_headers returns ISO-8859-1 (lines 556 to 557)."
+  },
+  {
+    "id": "q04",
+    "question": "Which status codes make raise_for_status throw an HTTPError?",
+    "expected_file": "models.py",
+    "expected_function": "Response.raise_for_status",
+    "expected_answer": "Codes from 400 to 499 (Client Error) and 500 to 599 (Server Error); any other code raises nothing (lines 1013 to 1024)."
+  },
+  {
+    "id": "q05",
+    "question": "By default, how many times does the transport adapter retry a failed connection?",
+    "expected_file": "adapters.py",
+    "expected_function": "HTTPAdapter.__init__",
+    "expected_answer": "Zero. With the default max_retries the adapter uses Retry(0, read=False), so it does not retry (lines 209 to 210)."
+  },
+  {
+    "id": "q06",
+    "question": "When per-request headers are combined with the session's headers, what happens to a key the request sets to None?",
+    "expected_file": "sessions.py",
+    "expected_function": "merge_setting",
+    "expected_answer": "The key is removed from the merged result: merge_setting deletes every key whose value is None after merging (lines 84 to 86)."
+  },
+  {
+    "id": "q07",
+    "question": "Is response.ok true only when the status code is 200?",
+    "expected_file": "models.py",
+    "expected_function": "Response.ok",
+    "expected_answer": "No. ok calls raise_for_status and is True for any status that does not raise, that is anything below 400 (lines 763 to 767)."
+  },
+  {
+    "id": "q08",
+    "question": "What username and password are extracted from a URL that contains no credentials?",
+    "expected_file": "utils.py",
+    "expected_function": "get_auth_from_url",
+    "expected_answer": "Two empty strings. unquote fails on the missing username and password, and get_auth_from_url falls back to (\"\", \"\") (lines 1028 to 1029)."
+  },
+  {
+    "id": "q09",
+    "question": "Can I list an IP range in CIDR notation in no_proxy to skip the proxy for those addresses?",
+    "expected_file": "utils.py",
+    "expected_function": "should_bypass_proxies",
+    "expected_answer": "Yes. For an IPv4 host, each no_proxy entry that is valid CIDR is checked with address_in_network, and a match bypasses the proxy (lines 795 to 797)."
+  },
+  {
+    "id": "q10",
+    "question": "How many requests per second can a Session send before requests starts throttling it?",
+    "expected_file": null,
+    "expected_function": null,
+    "expected_answer": "The code cannot answer this; requests has no throttling. A correct reply says not found in the code shown, with null file and line."
+  }
+]
