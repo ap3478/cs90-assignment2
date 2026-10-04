@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "567cb25a35df65009a1d10f839c232b0",
+  "asked_at": "2026-10-03T23:48:16+00:00",
+  "input_tokens": 54998,
+  "output_tokens": 33,
+  "text": "{\"answer\":\"It throws an HTTPError for status codes from 400 through 599, inclusive.\",\"file\":\"models.py\",\"line\":1013}"
+}

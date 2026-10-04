@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "44d282f0339bf133eeffb87ab3e9ea7e",
+  "asked_at": "2026-10-03T23:48:12+00:00",
+  "input_tokens": 54998,
+  "output_tokens": 29,
+  "text": "{\"answer\":\"A new Session allows 30 redirects before raising TooManyRedirects.\",\"file\":\"sessions.py\",\"line\":434}"
+}

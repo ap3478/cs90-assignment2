@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "0b25ac13063658d133e02e06a35ffb26",
+  "asked_at": "2026-10-03T23:48:22+00:00",
+  "input_tokens": 54999,
+  "output_tokens": 85,
+  "text": "{\"answer\":\"No. `response.ok` is true for any status that does not raise an HTTPError, including status codes below 400—not only 200.\",\"file\":\"models.py\",\"line\":767}"
+}

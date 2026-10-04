@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "e7ca8a8d33e3af6c0ce2d28e662c382d",
+  "asked_at": "2026-10-03T23:48:18+00:00",
+  "input_tokens": 55001,
+  "output_tokens": 110,
+  "text": "{\"answer\":\"By default, it retries 0 times; the adapter configures `Retry(0, read=False)`.\",\"file\":\"adapters.py\",\"line\":210}"
+}

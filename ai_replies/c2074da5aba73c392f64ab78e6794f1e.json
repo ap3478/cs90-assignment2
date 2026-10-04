@@ -1,0 +1,9 @@
+{
+  "provider": "openai",
+  "model": "gpt-6-luna",
+  "prompt_key": "c2074da5aba73c392f64ab78e6794f1e",
+  "asked_at": "2026-10-03T23:48:20+00:00",
+  "input_tokens": 55009,
+  "output_tokens": 79,
+  "text": "{\"answer\":\"The key is removed from the merged headers, so it won’t be sent.\", \"file\":\"sessions.py\", \"line\":86}"
+}
