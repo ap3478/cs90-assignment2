@@ -22,7 +22,14 @@ def cosine(a: list[float], b: list[float]) -> float:
     Return 0.0 if either vector has length 0 (all zeros).
     Raise ValueError if the two vectors do not have the same number of numbers.
     """
-    raise NotImplementedError("Step 7: write cosine in askcode/search_meaning.py")
+    if len(a) != len(b):
+        raise ValueError(f"vectors differ in length: {len(a)} and {len(b)}")
+    dot = sum(x * y for x, y in zip(a, b))
+    length_a = math.sqrt(sum(x * x for x in a))
+    length_b = math.sqrt(sum(y * y for y in b))
+    if length_a == 0 or length_b == 0:
+        return 0.0
+    return dot / (length_a * length_b)
 
 
 class MeaningIndex:
@@ -43,7 +50,14 @@ class MeaningIndex:
            order of `chunks`. One call is far faster than one call per chunk.
         4. Keep what you need for search: the chunks, their vectors, and embed_query.
         """
-        raise NotImplementedError("Step 7: write MeaningIndex.__init__ in askcode/search_meaning.py")
+        if embed_passages is None:
+            embed_passages = embed.embed_passages
+        if embed_query is None:
+            embed_query = embed.embed_query
+        self.chunks = list(chunks)
+        self.embed_query = embed_query
+        texts = [chunk.name + "\n" + chunk.text for chunk in self.chunks]
+        self.vectors = [list(v) for v in embed_passages(texts)]
 
     def search(self, question: str, k: int = 3) -> list[Chunk]:
         """Return the k chunks whose vectors are closest in meaning to the question.
@@ -56,4 +70,12 @@ class MeaningIndex:
         Unlike word search, this always returns k chunks (or every chunk, if there
         are fewer than k), even when none of them is relevant (slide 56).
         """
-        raise NotImplementedError("Step 7: write MeaningIndex.search in askcode/search_meaning.py")
+        if not self.chunks or k <= 0:
+            return []
+        query_vector = list(self.embed_query(question))
+        scored = [
+            (-cosine(query_vector, vector), index)
+            for index, vector in enumerate(self.vectors)
+        ]
+        scored.sort()
+        return [self.chunks[index] for _, index in scored[:k]]

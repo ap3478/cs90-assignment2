@@ -1,0 +1,1 @@
+I need help with search_words code to perform this task - A chunk scores points for every question word it contains, and rare words score more than common ones. In this codebase, "authorization" appears in 8 of the 230 functions, so it weighs log(230 / 8) = 3.36; "self" appears in 155, so it weighs only log(230 / 155) = 0.39. The exact formula is in the docstring

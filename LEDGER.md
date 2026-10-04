@@ -108,5 +108,28 @@ risk:      a reply that passes is well formed, not true: parse_reply does not
            check that "file" was one of the files shown or that "line" falls
            inside a shown function, so a confident wrong citation passes;
            behaviour on the hidden tests is unverified
-```
+
+## Entry 7
+artifact:  results/top3_words_five_part.csv, results/whole_five_part.csv,
+           results/gold_five_part.csv and ai_replies/ at commit 5da3b62
+tool:      askcode run_eval, openai gpt-6-luna
+prompts:   
+review:    read all 30 replies and marked the correct column in each file against
+           expected_answer in questions.json; marked q10 yes only where the reply
+           said not found; marked every valid_json = no row as no; assigned a fault
+           to each top3 miss using the Step 5 rule and Table 3
+checks:    python3.12 -m askcode.run_eval --context whole --prompt five_part --dry-run:
+           estimated 545,375 input tokens, about $0.1091;
+           python3.12 -m askcode.run_eval --search words --context top3 --prompt five_part:
+           valid JSON 10 of 10, right place 4 of 10;
+           Estimated Tokens: 24,188 in, 846 out, cost: $0.0053
+           python3.12 -m askcode.run_eval --context gold --prompt five_part:
+           valid JSON 10 of 10, right place 10 of 10;
+           python3.12 -m askcode.summary: Tables 2 and 3 printed
+evidence:  HANDOUT Step 5
+risk:      one run per configuration, so a fresh run may answer differently;
+           correct marks are my own judgement against expected_answer;
+        
+
+
 
