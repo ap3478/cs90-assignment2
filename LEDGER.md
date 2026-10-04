@@ -131,5 +131,56 @@ risk:      one run per configuration, so a fresh run may answer differently;
            correct marks are my own judgement against expected_answer;
         
 
+## Entry 8
+artifact:  askcode/search_meaning.py at commit 
+tool:      Claude Opus 5.5 on claude.ai
+prompts:   asked Claude to implement the assignment's code files from the handout,
+           which included search_meaning.py; later pasted the HANDOUT Step 7 text
+           asking for cosine and MeaningIndex, and Claude confirmed the existing
+           version, reran its tests, and explained it; prompts/claude-search-meaning.md
+review:    
+checks:    pytest tests/test_search_meaning.py: 6 passes in 0.01s
+           python3.12 -m askcode.run_eval --search meaning --no-ai:
+           
+evidence:  HANDOUT Step 7, search_meaning.py docstring rules
+risk:      
 
-
+## Entry 9
+artifact:  results/top3_words_five_part.csv, results/whole_five_part.csv,
+           results/gold_five_part.csv and ai_replies/ at commit <your SHA>
+tool:      askcode run_eval, openai gpt-6-luna, 
+           Claude Opus 5.5 on claude.ai, to compare my correct marks
+           with expected_answer and to check the dry run
+prompts:   
+review:    read all 30 replies and marked the correct column against expected_answer;
+           first marked every top3 row yes, then re-marked q02, q04, q05, q06 and q08
+           as no, because "not found in the code shown" (and the hedged q04 reply)
+           did not match the expected answers; kept q07 yes because its core claim
+           ("not only 200") is right; marked all whole and gold rows yes after reading
+           each reply; 
+checks:    python3.12 -m askcode.run_eval --context whole --prompt five_part --dry-run:
+           estimated 545,375 input tokens, about $0.1091;
+           python3.12 -m askcode.run_eval --search words --context top3 --prompt five_part:
+           valid JSON 10 of 10, right place 4 of 10;
+           python3.12 -m askcode.run_eval --context whole --prompt five_part:
+           valid JSON 10 of 10, right place 10 of 10;
+           python3.12 -m askcode.run_eval --context gold --prompt five_part:
+           valid JSON 10 of 10, right place 10 of 10;
+           python3.12 -m askcode.summary: Table 3 lists q02, q04, q05, q06, q08,
+           all hit no and correct with gold context yes
+evidence:  HANDOUT Step 5; REPORT.md sections 1 and 2
+risk:      one run per configuration on 10 questions, so a fresh run may differ;
+           correct marks are my own judgement against expected_answer;
+           q02's expected value (30) is set at module level, outside every chunk,
+           so no chunk-based context contains it
+result:    correct: top3 5 of 10, whole 10 of 10, gold 10 of 10;
+           input / output tokens: top3 24,188 / 846, whole 550,025 / 682,
+           gold 8,041 / 411; cost at $0.20 / $0.50 per MTok: top3 $0.0053,
+           whole $0.1103, gold $0.0018;
+           faults for top3 misses: retrieval 5, generation 0, both 0;
+           results/top3_words_five_part.csv, whole_five_part.csv, gold_five_part.csv
+changed:   every top3 miss was a retrieval failure and gold was perfect, so the
+           bottleneck is search, not the prompt; I kept the prompt unchanged and
+           compared meaning search on the same questions in Step 7 (8 of 9 in the
+           top 3 vs 3 of 9 for word search); I used whole vs top3 cost and accuracy
+           for the decision rule in REPORT.md section 2
